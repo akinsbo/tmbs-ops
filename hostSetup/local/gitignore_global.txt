@@ -1,0 +1,19 @@
+# Node
+npm-debug.log
+
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Netbeans
+nbproject
+
+# vi
+*~
+
+# General
+log/
+*.log
+
