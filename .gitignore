@@ -12,3 +12,7 @@ nbproject
 .env*
 !.env.example*
 .aws
+.secret/*
+.secrets/*
+secret*
+.secret*
