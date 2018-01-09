@@ -63,7 +63,21 @@ export AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key)
     --cloud-labels "Team=Dev,Owner=John Doe" \
     --image 293135079892/k8s-1.4-debian-jessie-amd64-hvm-ebs-2016-11-16 \
     ${NAME}
-
+#-------------------------------------------------------
+# preview the cluster
+kops create cluster \
+    --cloud aws \
+    --master-zones $ZONEA,$ZONEB,$ZONEC \
+    --master-size t2.micro \
+    --zones $ZONEA,$ZONEB,$ZONEC \
+    --node-count 2 \
+    --node-size t2.nano \
+    --topology private \
+    --dns-zone $DOMAIN_NAME \
+    --networking flannel \
+    --cloud-labels "Team=Dev,Owner=Olaolu Akinsete" \
+    ${NAME} \
+#-------------------------------------------------------
   # Create cluster in GCE.
   # This is an alpha feature.
   export KOPS_STATE_STORE="gs://mybucket-kops"

@@ -70,11 +70,9 @@ kops create cluster \
     --master-zones $ZONEA,$ZONEB,$ZONEC \
     --master-size t2.micro \
     --zones $ZONEA,$ZONEB,$ZONEC \
-    --node-count 2 \
+    --node-count 1 \
     --node-size t2.nano \
-    --topology private \
     --dns-zone $DOMAIN_NAME \
-    --networking flannel \
     --cloud-labels "Team=Dev,Owner=Olaolu Akinsete" \
     ${NAME} \
 
