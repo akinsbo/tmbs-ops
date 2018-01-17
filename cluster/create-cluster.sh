@@ -67,11 +67,11 @@ aws ec2 describe-key-pairs --key-name $KEY_PAIR_NAME
 # preview the cluster
 kops create cluster \
     --cloud aws \
-    --master-zones $ZONEA,$ZONEB,$ZONEC \
+    --master-zones $ZONEA \
     --master-size t2.micro \
     --zones $ZONEA,$ZONEB,$ZONEC \
-    --node-count 1 \
-    --node-size t2.nano \
+    --node-count 3 \
+    --node-size t2.micro \
     --dns-zone $DOMAIN_NAME \
     --cloud-labels "Team=Dev,Owner=Olaolu Akinsete" \
     ${NAME} \

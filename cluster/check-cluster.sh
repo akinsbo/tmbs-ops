@@ -6,6 +6,10 @@
 
 echo 'fetching nodes'
 kubectl get nodes
+# echo
+# echo 'listing clusters'
+# echo
+# kubectl list cluster
 echo
 echo 'checking cluster health (component status)'
 kubectl get cs
@@ -18,3 +22,6 @@ kubectl get deployments
 echo
 echo 'check current config'
 kubectl config view --minify
+echo
+echo 'cluster info'
+kubectl cluster-info
