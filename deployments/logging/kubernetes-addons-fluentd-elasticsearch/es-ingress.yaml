@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: elasticsearch
+  namespace: kube-system
+  labels:
+    k8s-app: elasticsearch-logging
+    kubernetes.io/cluster-service: "true"
+    addonmanager.kubernetes.io/mode: Reconcile
+spec:
+  rules:
+  -
+    # host: elasticsearch.minikube.localnet
+    host: elasticsearch.j9egj.k8s.ginger.eu-central-1.aws.gigantic.io
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: elasticsearch
+          servicePort: 9200

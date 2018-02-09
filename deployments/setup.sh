@@ -11,7 +11,7 @@ kubectl get pods --watch
 #--------------------------
 # Install monocular into the cluster
 helm repo add monocular https://kubernetes-helm.github.io/monocular
-helm install monocular/monocular
+helm install --name monocular-mbshow monocular/monocular
 # Use the Ingress endpoint to access your Monocular instance
 # Wait for all pods to be running (this can take a few minutes)
 kubectl get pods --watch

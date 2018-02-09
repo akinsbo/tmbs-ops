@@ -1,8 +1,12 @@
 #----------------------------------------------------------------------------------
-# export all variables in the env file, then disable the export
+# export all cluster variables in the env file, then disable the export
 #----------------------------------------------------------------------------------
 set -o allexport
 source .env.sh
+set +o allexport
+# export logging environmental variables
+set -o allexport
+source .env.efk-logging.sh
 set +o allexport
 # #----------------------------------------------------------------------------------
 # # Create User and Group. Set Group permissions
@@ -67,7 +71,7 @@ aws ec2 describe-key-pairs --key-name $KEY_PAIR_NAME
 # preview the cluster
 kops create cluster \
     --cloud aws \
-    --master-zones $ZONEA \
+    --master-zones $ZONEA,$ZONEB,$ZONEC \
     --master-size t2.micro \
     --zones $ZONEA,$ZONEB,$ZONEC \
     --node-count 3 \
@@ -91,6 +95,8 @@ kubectl get nodes
 kops validate cluster
 # check all systems in cluster    
 kubectl -n kube-system get po
+# check for efk logging setup
+kubectl get pods --namespace=kube-system
 # #----------------------------------------------------------------------------------
 # # Update cluster from modified cluster spec at ~/.kube/config
 # #----------------------------------------------------------------------------------

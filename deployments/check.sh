@@ -1,7 +1,10 @@
-DEPLOYMENT=quoting-sponge-monocular-ui
+DEPLOYMENT=littering-orangutan-monocular-ui
 
 # Check the deployments
 kubectl get pods
+
+# Same as above
+kubectl get pod -a
 
 kubectl describe  $DEPLOYMENT
 
@@ -12,3 +15,9 @@ export SERVICE_IP=$(kubectl get svc --namespace default $DEPLOYMENT --template "
 echo http://$SERVICE_IP:8080/login
 
 kubectl logs -f $DEPLOYMENT
+
+# enter into deployment shell to check env vars
+kubectl exec -it $DEPLOYMENT /bin/sh
+env
+
+exit
