@@ -2,7 +2,7 @@
 # export all cluster variables in the env file, then disable the export
 #----------------------------------------------------------------------------------
 set -o allexport
-source .env.sh
+source .env
 set +o allexport
 # export logging environmental variables
 set -o allexport

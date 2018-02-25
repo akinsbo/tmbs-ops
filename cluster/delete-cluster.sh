@@ -2,7 +2,7 @@
 # export all variables in the env file, then disable the export
 #----------------------------------------------------------------------------------
 set -o allexport
-source .env.sh
+source .env
 set +o allexport
 #----------------------------------------------------------------------------------
 # Delete cluster

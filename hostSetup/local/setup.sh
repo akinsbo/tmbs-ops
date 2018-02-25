@@ -16,6 +16,11 @@ curl -LO https://storage.googleapis.com/kubernetes-release/release/$KUBERNETES_V
 kubectl version
 # Install aws
 pip install awscli
+
+# Install jinja2 for Ceph cluster storage
+pip install jinja2-cli
+#  or install sigil for Ceph cluster storage
+# sudo curl -L "https://github.com/gliderlabs/sigil/releases/download/v0.4.0/sigil_0.4.0_$(uname -sm|tr \  _).tgz"     | sudo tar -zxC /usr/local/bin
 }
 
 osxInstall() {

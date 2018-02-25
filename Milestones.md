@@ -1,0 +1,1 @@
+First cluster rolling-update, successfully conducted (labelling nodes)

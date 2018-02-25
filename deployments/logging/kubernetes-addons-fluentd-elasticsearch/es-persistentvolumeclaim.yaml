@@ -9,11 +9,10 @@ metadata:
     kubernetes.io/cluster-service: "true"
     stack: logging
 spec:
-  storageClassName: standard
+  storageClassName: efk-store
   accessModes:
   - ReadWriteOnce
   resources:
     requests:
-      storage: 20G
----
+      storage: 20Gi
 
