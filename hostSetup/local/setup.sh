@@ -16,7 +16,8 @@ curl -LO https://storage.googleapis.com/kubernetes-release/release/$KUBERNETES_V
 kubectl version
 # Install aws
 pip install awscli
-
+# Clone asdf k8s version management for later installation
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.4.2
 # Install jinja2 for Ceph cluster storage
 pip install jinja2-cli
 #  or install sigil for Ceph cluster storage
@@ -48,6 +49,9 @@ brew install dvm
 brew update && brew install kops
 # Kops uses jq for json format query
 brew install jq
+# kubectl and minikube use asdf for version management
+echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.bash_profile
+echo -e '\n. $HOME/.asdf/completions/asdf.bash' >> ~/.bash_profile
 # Check installations
 minikube version
 kvm --version
@@ -96,6 +100,9 @@ sudo mv kops-linux-amd64 /usr/local/bin/kops
 # Kops uses jq for json format query
 apt-get -y update
 apt-get -y install jq
+# kubectl and minikube use asdf for version management
+echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.bashrc
+echo -e '\n. $HOME/.asdf/completions/asdf.bash' >> ~/.bashrc
 # Check installations
 minikube version
 kvm --version
