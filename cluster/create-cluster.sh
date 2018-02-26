@@ -90,13 +90,28 @@ kops update cluster ${NAME} --yes
 #----------------------------------------------------------------------------------
 # Check cluster
 #----------------------------------------------------------------------------------
-kubectl get nodes
-# check cluster health
-kops validate cluster
-# check all systems in cluster    
-kubectl -n kube-system get po
-# check for efk logging setup
-kubectl get pods --namespace=kube-system
+timeOut(){
+# this for loop waits until kubectl can access the api server that Minikube has created
+for i in {1..150}; do # timeout for 5 minutes
+   kubectl get nodes # fetch nodes
+   if [ $? -eq 0 ]; then
+    echo 'nodes ready...aws has provision nodes'
+    bash ./check-cluster.sh
+    break
+  fi
+  echo 'waiting for aws to provision nodes...'
+  sleep 2
+done
+}
+
+timeOut
+
+# # check cluster health
+# kops validate cluster
+# # check all systems in cluster    
+# kubectl -n kube-system get po
+# # check for efk logging setup
+# kubectl get pods --namespace=kube-system
 # #----------------------------------------------------------------------------------
 # # Update cluster from modified cluster spec at ~/.kube/config
 # #----------------------------------------------------------------------------------

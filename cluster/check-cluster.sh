@@ -25,3 +25,6 @@ kubectl config view --minify
 echo
 echo 'cluster info'
 kubectl cluster-info
+echo 'setting up storage glusterfs'
+cd glusterfs/
+bash run.sh
